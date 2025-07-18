@@ -11,7 +11,15 @@ export const deleteUser = async (req, res, next) => {
   res.status(200).send("deleted.");
 };
 export const getUser = async (req, res, next) => {
-  const user = await User.findById(req.params.id);
+  try {
+    const user = await User.findById(req.params.id);
 
-  res.status(200).send(user);
+    if (!user) {
+      return res.status(404).send("User not found");
+    }
+
+    res.status(200).send(user);
+  } catch (err) {
+    next(err); // this will show up in the React Query 'error'
+  }
 };
