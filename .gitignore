@@ -27,6 +27,6 @@ Thumbs.db
 *.sublime-workspace
 .idea/
 .vscode/
-
+user
 # npm package files
 package-lock.json
